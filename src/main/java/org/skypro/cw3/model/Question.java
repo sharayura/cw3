@@ -1,5 +1,9 @@
 package org.skypro.cw3.model;
 
+import org.apache.commons.lang3.StringUtils;
+import org.skypro.cw3.service.BadRequestException;
+import org.springframework.http.HttpStatus;
+
 import java.util.Objects;
 
 public class Question {
@@ -7,6 +11,9 @@ public class Question {
     private final String answer;
 
     public Question(String question, String answer) {
+        if (StringUtils.isBlank(question) || StringUtils.isBlank(answer)) {
+            throw new BadRequestException(HttpStatus.BAD_REQUEST, "Запрос неполный");
+        }
         this.question = question;
         this.answer = answer;
     }

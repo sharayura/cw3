@@ -24,13 +24,16 @@ public class JavaQuestionService implements QuestionService{
 
     @Override
     public Question add(Question question) {
+        if (question == null) {
+            throw new BadRequestException(HttpStatus.BAD_REQUEST, "Запрос неполный");
+        }
         questions.add(question);
         return question;
     }
 
     @Override
     public Question remove(Question question) {
-        if (!questions.contains(question)) {
+        if (question == null || !questions.contains(question)) {
             throw new BadRequestException(HttpStatus.BAD_REQUEST, "Такого вопроса нет");
         }
         questions.remove(question);
