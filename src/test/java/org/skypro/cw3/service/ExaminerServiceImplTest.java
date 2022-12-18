@@ -3,19 +3,22 @@ package org.skypro.cw3.service;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.skypro.cw3.model.Question;
 
 import java.util.Collection;
 import java.util.HashSet;
 
-import static org.mockito.Mockito.mock;
 
+@ExtendWith(MockitoExtension.class)
 public class ExaminerServiceImplTest {
 
-    private final JavaQuestionService questionServiceMock = mock(JavaQuestionService.class);
+    @Mock
+    private JavaQuestionService questionServiceMock; // = mock(JavaQuestionService.class);
 
     @InjectMocks
     private ExaminerServiceImpl examinerService;
@@ -43,8 +46,6 @@ public class ExaminerServiceImplTest {
         questionsMock.add(question4);
         questionsMock.add(question5);
         Mockito.when(questionServiceMock.getAll()).thenReturn(questionsMock);
-        Mockito.when(questionServiceMock.getRandomQuestion()).thenReturn(question1).thenReturn(question3)
-                .thenReturn(question2).thenReturn(question5).thenReturn(question4);
 
     }
 
@@ -55,6 +56,8 @@ public class ExaminerServiceImplTest {
 
     @Test
     public void shouldReturnSameHashSetTest() {
+        Mockito.when(questionServiceMock.getRandomQuestion()).thenReturn(question1).thenReturn(question3)
+                .thenReturn(question2).thenReturn(question5).thenReturn(question4);
         Assertions.assertEquals(questionsMock, examinerService.getQuestions(questionsMock.size()));
     }
 
