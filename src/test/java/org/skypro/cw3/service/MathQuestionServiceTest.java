@@ -4,10 +4,10 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.skypro.cw3.model.Question;
-import org.skypro.cw3.repository.JavaQuestionRepository;
+import org.skypro.cw3.repository.MathQuestionRepository;
 import org.skypro.cw3.repository.QuestionRepository;
 
-public class JavaQuestionServiceTest {
+public class MathQuestionServiceTest {
     private Question question1;
     private Question question2;
     private Question question3;
@@ -26,8 +26,8 @@ public class JavaQuestionServiceTest {
         question5 = new Question("Question5", "Answer5");
 
 
-        questionRepository = new JavaQuestionRepository();
-        questionService = new JavaQuestionService(questionRepository);
+        questionRepository = new MathQuestionRepository();
+        questionService = new MathQuestionService(questionRepository);
         questionService.add(question1);
         questionService.add(question2);
         questionService.add(question3);

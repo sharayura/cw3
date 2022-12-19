@@ -12,13 +12,14 @@ import org.skypro.cw3.model.Question;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 
 
 @ExtendWith(MockitoExtension.class)
 public class ExaminerServiceImplTest {
 
     @Mock
-    private JavaQuestionService questionServiceMock; // = mock(JavaQuestionService.class);
+    private QuestionService questionServiceMock; // = mock(JavaQuestionService.class);
 
     @InjectMocks
     private ExaminerServiceImpl examinerService;
@@ -33,7 +34,7 @@ public class ExaminerServiceImplTest {
 
     @BeforeEach
     public void setup() {
-        examinerService = new ExaminerServiceImpl(questionServiceMock);
+        examinerService = new ExaminerServiceImpl(List.of(questionServiceMock));
         question1 = new Question("Question1", "Answer1");
         question2 = new Question("Question2", "Answer2");
         question3 = new Question("Question3", "Answer3");

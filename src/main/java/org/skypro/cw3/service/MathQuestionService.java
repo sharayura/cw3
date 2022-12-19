@@ -1,7 +1,6 @@
 package org.skypro.cw3.service;
 
 import org.skypro.cw3.model.Question;
-import org.skypro.cw3.repository.JavaQuestionRepository;
 import org.skypro.cw3.repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
@@ -10,12 +9,11 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 
 @Service
-public class JavaQuestionService implements QuestionService{
-
+public class MathQuestionService implements QuestionService{
     private final QuestionRepository questionRepository;
     private final  Random rand = new Random();
 
-    public JavaQuestionService(@Qualifier("javaQuestionRepository") QuestionRepository questionRepository) {
+    public MathQuestionService(@Qualifier("mathQuestionRepository") QuestionRepository questionRepository) {
         this.questionRepository = questionRepository;
     }
 

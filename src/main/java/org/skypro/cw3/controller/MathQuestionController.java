@@ -1,7 +1,6 @@
 package org.skypro.cw3.controller;
 
 import org.skypro.cw3.model.Question;
-import org.skypro.cw3.service.JavaQuestionService;
 import org.skypro.cw3.service.QuestionService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,12 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Collection;
 
 @RestController
-@RequestMapping("/exam/java")
-public class JavaQuestionController {
-
+@RequestMapping("/exam/math")
+public class MathQuestionController {
     private final QuestionService service;
 
-    public JavaQuestionController(@Qualifier("javaQuestionService") QuestionService service) {
+    public MathQuestionController(@Qualifier("mathQuestionService") QuestionService service) {
         this.service = service;
     }
 
